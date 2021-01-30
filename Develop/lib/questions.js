@@ -2,13 +2,18 @@ const questions = {
   employee: [
     {
       type: "input",
-      name: "firstName",
-      message: "Enter employees first name",
+      name: "name",
+      message: "Enter employees name",
     },
     {
       type: "input",
-      name: "lastName",
-      message: "Enter employees last name",
+      name: "id",
+      message: "Enter employees id",
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "Enter the employees email",
     },
     {
       type: "list",

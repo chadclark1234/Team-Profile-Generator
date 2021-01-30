@@ -1,8 +1,8 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const questions = require("./questions");
+const questions = require("./lib/questions");
 
-inquirer.prompt(questions.again);
+inquirer.prompt(questions);
 
 // .then((answers) => {
 //   const template = generateMarkdown(answers);

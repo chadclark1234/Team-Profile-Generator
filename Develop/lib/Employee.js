@@ -12,8 +12,8 @@ class Employee {
 }
 getRole = () => "Employee";
 
-let testOB = new Employee("test", 1, "test@test");
-console.log(testOB);
-console.log(testOB.getEmail());
+// let testOB = new Employee("Alice", 100, "test@test.com");
+// console.log(testOB);
+// console.log(testOB.getEmail());
 
 module.exports = Employee;
