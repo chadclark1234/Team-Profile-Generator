@@ -9,11 +9,8 @@ class Employee {
   getId = () => this.id;
 
   getEmail = () => this.email;
-}
-getRole = () => "Employee";
 
-// let testOB = new Employee("Alice", 100, "test@test.com");
-// console.log(testOB);
-// console.log(testOB.getEmail());
+  getRole = () => "Employee";
+}
 
 module.exports = Employee;
