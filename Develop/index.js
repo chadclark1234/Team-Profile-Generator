@@ -2,8 +2,30 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const questions = require("./lib/questions");
 const Manager = require("./lib/Manager");
+const Intern = require("./lib/Intern");
+const Engineer = require("./lib/Engineer");
 const pageTemplate = require("./page-template.js");
+
+// TEAM OBJECT ARRAY AFTER PROMPTS \\
 const team = [];
+
+// FIRST PROMPT STARTS WITH MANAGER \\
+inquirer
+  .prompt([...questions.employee, ...questions.manager])
+  .then((answers) => {
+    console.log(answers);
+    const aManager = new Manager(
+      answers.name,
+      answers.id,
+      answers.email,
+      answers.office
+    );
+    team.push(aManager);
+    console.log(team);
+    listQuestions();
+  });
+
+// FUNCTION CALLED AFTER MANAGER AND IF MORE EMPLOYEES TO ENTER \\
 function listQuestions() {
   inquirer.prompt(questions.employeeList).then((answers) => {
     const role = answers.role;
@@ -15,8 +37,15 @@ function listQuestions() {
           ...questions.again,
         ])
         .then((answers) => {
+          const aEngineer = new Engineer(
+            answers.name,
+            answers.id,
+            answers.email,
+            answers.github
+          );
+          team.push(aEngineer);
+          console.log(team);
           if (answers.again === true) {
-            // inquirer.prompt(questions.employee);
             listQuestions();
           } else {
             console.log("Employee Entry Complete");
@@ -31,8 +60,16 @@ function listQuestions() {
           ...questions.again,
         ])
         .then((answers) => {
+          console.log(answers);
+          const aIntern = new Intern(
+            answers.name,
+            answers.id,
+            answers.email,
+            answers.school
+          );
+          team.push(aIntern);
+          console.log(team);
           if (answers.again === true) {
-            // inquirer.prompt(questions.employee);
             listQuestions();
           } else {
             console.log("Employee Entry Complete");
@@ -43,31 +80,3 @@ function listQuestions() {
     }
   });
 }
-
-inquirer
-  .prompt([...questions.employee, ...questions.manager])
-  .then((answers) => {
-    console.log(answers);
-    const aManager = new Manager(
-      answers.name,
-      answers.id,
-      answers.email,
-      answers.office
-    );
-    team.push(aManager);
-    console.log(team);
-    // if (answers.again === true) {
-    listQuestions();
-    // }
-  });
-
-// inquirer.prompt(questions.employee).then((answers) => {
-//   const role = answers.role;
-//   console.log(role);
-// });
-
-// .then((answers) => {
-//   const template = generateMarkdown(answers);
-//   console.log(template);
-//   generateFile(template);
-// });
