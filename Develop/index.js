@@ -13,7 +13,6 @@ const team = [];
 inquirer
   .prompt([...questions.employee, ...questions.manager])
   .then((answers) => {
-    console.log(answers);
     const aManager = new Manager(
       answers.name,
       answers.id,
@@ -21,7 +20,6 @@ inquirer
       answers.office
     );
     team.push(aManager);
-    console.log(team);
     listQuestions();
   });
 
@@ -44,7 +42,6 @@ function listQuestions() {
             answers.github
           );
           team.push(aEngineer);
-          console.log(team);
           if (answers.again === true) {
             listQuestions();
           } else {
@@ -61,7 +58,6 @@ function listQuestions() {
           ...questions.again,
         ])
         .then((answers) => {
-          console.log(answers);
           const aIntern = new Intern(
             answers.name,
             answers.id,
@@ -69,14 +65,12 @@ function listQuestions() {
             answers.school
           );
           team.push(aIntern);
-          console.log(team);
           if (answers.again === true) {
             listQuestions();
           } else {
             console.log("Employee Entry Complete");
             let html = pageTemplate(team);
             writeTeam(html);
-            console.log(html);
           }
         });
     }
@@ -86,6 +80,6 @@ function listQuestions() {
 // WRITE TEAM TO STRING AND BUILD HTML \\
 function writeTeam(data) {
   fs.writeFile("team.html", data, (err) =>
-    err ? console.error("error") : console.log("Your ReadMe is complete!")
+    err ? console.error("error") : console.log("Your team profile is complete!")
   );
 }
