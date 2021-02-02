@@ -48,7 +48,7 @@ const questions = {
       type: "input",
       name: "school",
       message: "Enter the employees school",
-      default: "Harvard",
+      default: "U of MN",
     },
   ],
   again: [

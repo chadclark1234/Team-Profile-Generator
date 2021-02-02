@@ -50,6 +50,7 @@ function listQuestions() {
           } else {
             console.log("Employee Entry Complete");
             let html = pageTemplate(team);
+            writeTeam(html);
           }
         });
     } else if (role === "Intern") {
@@ -74,9 +75,17 @@ function listQuestions() {
           } else {
             console.log("Employee Entry Complete");
             let html = pageTemplate(team);
+            writeTeam(html);
             console.log(html);
           }
         });
     }
   });
+}
+
+// WRITE TEAM TO STRING AND BUILD HTML \\
+function writeTeam(data) {
+  fs.writeFile("team.html", data, (err) =>
+    err ? console.error("error") : console.log("Your ReadMe is complete!")
+  );
 }
